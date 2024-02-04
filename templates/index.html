@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+  </head>
+  <body>
+    <h1>First View</h1>
+
+    <div>
+      {% csrf_token %}
+      <!-- <p><input id="title" type="text" name="title" placeholder="title"></p> -->
+      <p><textarea id="body" name="body" placeholder="body"></textarea></p>
+      <p><input id="btn_save" type="button" value="SAVE"></p>
+      <p><input id="btn_get" type="button" value="GET"></p>
+    </div>
+
+    <div id="result">
+
+    </div>
+
+  </body>
+</html>
