@@ -1,10 +1,9 @@
 $(document).ready(function(){
-  var saveButton = $('#btn_save');
-  var getbutton = $('#btn_get')
+  var createButton = $('#btn_create');
   var title = $('#title');
   var body = $('#body');
 
-  saveButton.click(function() {
+  createButton.click(function() {
     $.ajax({
   		type: 'POST',
   		url : '/create/',
@@ -17,21 +16,6 @@ $(document).ready(function(){
         var result_dom = "<p>" + result + "</p>";
         $("#result").empty();
         $("#result").append(result_dom);
-        console.log('success save')
-  		},
-  		error:function(){
-
-  		}
-  	});
-  });
-
-  getbutton.click(function() {
-    $.ajax({
-  		type: 'GET',
-  		url : '/read/',
-  		data: { },
-  		success: function(result){
-        console.log('GET!')
   		},
   		error:function(){
 

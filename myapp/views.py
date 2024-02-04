@@ -11,8 +11,6 @@ def index(request):
     return TemplateResponse(request, "index.html")
 
 
-
-# https://iamthejiheee.tistory.com/93
 @method_decorator(csrf_exempt, name = "dispatch")
 class BaseView(View):
 
