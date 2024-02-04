@@ -3,8 +3,6 @@ $(document).ready(function(){
   var getbutton = $('#btn_get')
   var title = $('#title');
   var body = $('#body');
-  console.log("hi");
-
 
   saveButton.click(function() {
     $.ajax({
@@ -16,8 +14,10 @@ $(document).ready(function(){
       },
   		success: function(result){
   			result = JSON.stringify(result);
-        var result_dom = "<h2>" + result + "</h2>";
+        var result_dom = "<p>" + result + "</p>";
+        $("#result").empty();
         $("#result").append(result_dom);
+        console.log('success save')
   		},
   		error:function(){
 
@@ -31,10 +31,7 @@ $(document).ready(function(){
   		url : '/read/',
   		data: { },
   		success: function(result){
-        console.log('hellllllllo')
-  			// result = JSON.stringify(result);
-        // var result_dom = "<h2>" + result + "</h2>";
-        // $("#result").append(result_dom);
+        console.log('GET!')
   		},
   		error:function(){
 

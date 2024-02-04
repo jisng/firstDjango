@@ -1,25 +1,28 @@
-from django.http import JsonResponse
 import json
-from django.shortcuts import render, HttpResponse, redirect
+from django.http import JsonResponse
 from django.template.response import TemplateResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.views import View
-
-json_string = ""
 
 def index(request):
     return TemplateResponse(request, "index.html")
 
+
+
+# https://iamthejiheee.tistory.com/93
+@method_decorator(csrf_exempt, name = "dispatch")
 class BaseView(View):
 
-    @csrf_exempt
-    def get(self, request):
-        body = request.POST['body']
-        dictString = json.loads(body)
-        json_string = dictString  # 클래스 변수로 할당
-        return JsonResponse(json_string)
-
+    json_string = ""
 
     def post(self, request):
-        return JsonResponse(json_string)
+        body = request.POST['body']
+        dictString = json.loads(body)
+        BaseView.json_string = dictString
+        return JsonResponse(BaseView.json_string)
+
+def get(request):
+    return JsonResponse(BaseView.json_string)
